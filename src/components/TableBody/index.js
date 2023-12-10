@@ -1,16 +1,16 @@
 import SingleRow from '../SingleRow';
-import React, {useState} from 'react';
+import React from 'react';
 
-const TableBody = ({ filteredResults, onDataFromParent}) => {
+const TableBody = ({ filteredResults}) => {
 
-  const handleDataFromChild = (data) => {
-    onDataFromParent(data);
-  };
+  // const handleDataFromChild = (data) => {
+  //   onDataFromParent(data);
+  // };
 
     return (
       <tbody cellSpacing='4'>
         {filteredResults.map((user) => {
-          return <SingleRow user={user} key={user.url} planet={user.planet} onDataFromChild={handleDataFromChild}/>
+          return <SingleRow user={user} key={user.url} planet={user.planet} />
           })
         }
       </tbody>
