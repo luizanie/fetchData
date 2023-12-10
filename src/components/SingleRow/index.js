@@ -15,7 +15,7 @@ const SingleRow = ({ user, onDataFromChild }) => {
   const onPlanetClick = (id) => {
     onDataFromChild(id);
   }
-  
+
   return (
      <>
       <tr key={getPeopleUrl(user.url)}> 
@@ -25,7 +25,11 @@ const SingleRow = ({ user, onDataFromChild }) => {
 
         <td> {formatDate(user.created)}</td>
         <td>{formatDate(user.edited)}</td>
-        <td onClick={()=> onPlanetClick(user.planet)}>{user.planet.name}</td>
+        <td>
+          <button className='button__primary' onClick={()=> onPlanetClick(user.planet)}>
+          {user.planet.name}
+          </button>
+        </td>
       </tr>
      </>
   )

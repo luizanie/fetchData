@@ -77,7 +77,7 @@ const [selectedPlanet, setSelectedPlanet] = useState('');
   
         const planetsResults = [...planetJson1.results, ...planetJson2.results, ...planetJson3.results, ...planetJson4.results, ...planetJson5.results, ...planetJson6.results];   
   
-        peopleResults.forEach((person, index) => {
+        peopleResults.forEach((person) => {
   
           const planetName = planetsResults.find((planet) => person.homeworld == planet.url);
   
@@ -157,10 +157,10 @@ const [selectedPlanet, setSelectedPlanet] = useState('');
       )
      }
 
-    {selectedPlanet &&     <div className='planetPopup'>
+    {selectedPlanet &&  <div className='planetPopup'>
       <PlanetPopup planet={selectedPlanet}
             onClose={()=>setSelectedPlanet(null)}/>
-            </div> }
+     </div> }
  
     
    

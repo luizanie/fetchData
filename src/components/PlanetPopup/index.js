@@ -16,7 +16,7 @@ const PlanetPopup = ({planet, onClose}) => {
         <p><strong>Diameter:</strong> {formatNumber(planet.diameter)}</p>
         <p><strong>Climate:</strong> {planet.climate.toUpperCase()}</p>
         <p><strong>Population:</strong> {(planet.population !== 'unknown')  ? formatNumber(planet.population) : 'Unknown number'}</p>
-        <button onClick={onClose}>Close</button>
+        <button className='button__primary' onClick={onClose}>Close</button>
       </div>
     </div>
     
