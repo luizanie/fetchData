@@ -3,13 +3,15 @@ import { useState, useEffect } from 'react';
 import TableBody from './components/TableBody';
 import SearchBar from './components/SearchBar';
 import './main.css';
+import PlanetPopup from './components/PlanetPopup';
 
 function App() {
   const [errorFetching, setErrorFetching] = useState(null);
   const [isLoading, setLoading ]=useState(true);
   const [filteredData, setFilteredData]=useState([]);
   const [allData, setAllData] = useState([]);
-
+  const [receivedData, setReceivedData] = useState('');
+const [selectedPlanet, setSelectedPlanet] = useState('');
   const data=[];
 
   useEffect(() => {
@@ -115,6 +117,10 @@ function App() {
     setFilteredData(sortTable);
   }
   
+  const handleDataFromSingleRow = (data) => {
+    setSelectedPlanet(data);
+  };
+
   if(errorFetching){
     return <div className='loader fetch-error'> 
       <div className="loader__animation"> </div>
@@ -145,11 +151,19 @@ function App() {
             <th onClick ={() => handleSortSring('planetName')}>Planet Name</th>
           </tr>
         </thead>   
-        <TableBody filteredResults={filteredData} />
+        <TableBody filteredResults={filteredData}  onDataFromParent={handleDataFromSingleRow}/>
       </table>
-      ) }
-   
+      
+      )
+     }
 
+    {selectedPlanet &&     <div className='planetPopup'>
+      <PlanetPopup planet={selectedPlanet}
+            onClose={()=>setSelectedPlanet(null)}/>
+            </div> }
+ 
+    
+   
     </div>
   )
 }

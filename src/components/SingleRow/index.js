@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import PlanetPopup from '../PlanetPopup';
 
-const SingleRow = ({ user, planet }) => {
-
-  const [selectedPlanet, setSelectedPlanet]=useState(null);
+const SingleRow = ({ user, onDataFromChild }) => {
 
   const getPeopleUrl = (peopleUrl) =>{
     return peopleUrl.split('/').slice(-2, -1).pop();
@@ -15,9 +13,9 @@ const SingleRow = ({ user, planet }) => {
   }
   
   const onPlanetClick = (id) => {
-    setSelectedPlanet(id);
+    onDataFromChild(id);
   }
-
+  
   return (
      <>
       <tr key={getPeopleUrl(user.url)}> 
@@ -27,11 +25,8 @@ const SingleRow = ({ user, planet }) => {
 
         <td> {formatDate(user.created)}</td>
         <td>{formatDate(user.edited)}</td>
-        <td onClick={()=> onPlanetClick(user.planet.name)}>{user.planet.name}</td>
+        <td onClick={()=> onPlanetClick(user.planet)}>{user.planet.name}</td>
       </tr>
-
-     {selectedPlanet && <PlanetPopup planet={planet}
-      onClose={()=>setSelectedPlanet(null)}/> }
      </>
   )
 }
