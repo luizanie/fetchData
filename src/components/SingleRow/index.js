@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import PlanetPopup from '../PlanetPopup';
+import { useNavigate } from 'react-router-dom';
 
 const SingleRow = ({ user, onDataFromChild }) => {
+  const navigate = useNavigate();
 
   const getPeopleUrl = (peopleUrl) =>{
     return peopleUrl.split('/').slice(-2, -1).pop();
@@ -12,8 +13,11 @@ const SingleRow = ({ user, onDataFromChild }) => {
     return displayDate;
   }
   
+  const idPlanet = getPeopleUrl(user.planet.url);
+
   const onPlanetClick = (id) => {
     onDataFromChild(id);
+    navigate(`/modal/${idPlanet}`);
   }
 
   return (

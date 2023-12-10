@@ -4,6 +4,8 @@ import TableBody from './components/TableBody';
 import SearchBar from './components/SearchBar';
 import './main.css';
 import PlanetPopup from './components/PlanetPopup';
+import { Route, Routes } from 'react-router-dom';
+import { Link, Outlet} from "react-router-dom";
 
 function App() {
   const [errorFetching, setErrorFetching] = useState(null);
@@ -156,11 +158,15 @@ const [selectedPlanet, setSelectedPlanet] = useState('');
       
       )
      }
-
-    {selectedPlanet &&  <div className='planetPopup'>
+      <Link to="modal" state={{ background: location }}>
+        Open Modal
+      </Link>
+       <Outlet/>
+            
+    {/* {selectedPlanet &&  <div className='planetPopup'>
       <PlanetPopup planet={selectedPlanet}
             onClose={()=>setSelectedPlanet(null)}/>
-     </div> }
+     </div> } */}
  
     
    
