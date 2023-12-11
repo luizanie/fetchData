@@ -80,6 +80,7 @@ function App() {
           data.push({
             ...person,
             planet: planetName,
+            planetName: planetName.name
           })
         });
         setFilteredData(data);

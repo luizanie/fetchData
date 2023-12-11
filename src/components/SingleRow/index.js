@@ -28,9 +28,12 @@ const SingleRow = ({ user }) => {
         <td>{formatDate(user.created)}</td>
         <td>{formatDate(user.edited)}</td>
         <td>
-          <button className='button__primary' onClick={()=> onPlanetClick(user.planet)}>
-          {user.planet.name}
-          </button>
+          {user.planetName !== 'unknown' ? (
+            <button className='button__primary' onClick={()=> onPlanetClick(user.planet)}>
+              {user.planetName}
+            </button>
+            ) : <p> Unknown</p>
+          }
         </td>
       </tr>
      </>
