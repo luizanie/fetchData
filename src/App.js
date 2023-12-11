@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import Main from './Main';
 import Table from './components/Table'
 import PlanetPopup from './components/PlanetPopup';
 import './main.css';

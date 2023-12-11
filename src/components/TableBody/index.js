@@ -3,10 +3,6 @@ import React from 'react';
 
 const TableBody = ({ filteredResults}) => {
 
-  // const handleDataFromChild = (data) => {
-  //   onDataFromParent(data);
-  // };
-
     return (
       <tbody cellSpacing='4'>
         {filteredResults.map((user) => {
